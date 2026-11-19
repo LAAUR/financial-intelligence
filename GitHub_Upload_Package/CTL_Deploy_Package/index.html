@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CTL Financial Intelligence — Dashboard</title>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+:root{--navy:#0b1d33;--navy2:#132c49;--gold:#d6ad55;--ink:#eaf0f7;--muted:#aab8c8;--panel:#13243a;--line:#29415d}
+*{box-sizing:border-box}body{margin:0;background:#081525;color:var(--ink);font:15px/1.5 Inter,Segoe UI,Arial,sans-serif}
+header{padding:22px 24px;background:linear-gradient(120deg,#081525,#173653);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.brand{font-weight:800;letter-spacing:2px;font-size:24px}.brand span{color:var(--gold)}.sub{color:var(--muted);font-size:12px}
+main{max-width:1300px;margin:auto;padding:22px}.notice{border:1px solid #8e6e2e;background:#352b18;color:#f6d88f;padding:12px 15px;border-radius:10px;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:16px;min-width:0}
+.kicker{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}.value{font-size:27px;font-weight:750;margin:6px 0}.delta{color:#9ed6b0;font-size:13px}.negative{color:#ff9d9d}
+.section{margin-top:22px}.section h2{font-size:17px;margin:0 0 12px;color:#f3d58e}.charts{display:grid;grid-template-columns:1.3fr 1fr;gap:14px}.chart{height:310px}.table{width:100%;border-collapse:collapse}.table td,.table th{text-align:left;padding:10px;border-bottom:1px solid var(--line);font-size:13px}.table th{color:var(--muted)}
+footer{padding:20px 24px;color:var(--muted);border-top:1px solid var(--line);font-size:12px;margin-top:30px}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.charts{grid-template-columns:1fr}}
+@media(max-width:480px){main{padding:13px}.grid{grid-template-columns:1fr 1fr}.value{font-size:22px}.chart{height:260px}}
+</style></head><body>
+<header><div><div class="brand">CTL <span>FINANCIAL INTELLIGENCE</span></div><div class="sub">INVESTEȘTE • ÎNVAȚĂ • CREȘTE</div></div><div class="sub">PROTOTIP RESPONSIVE · PC + ANDROID</div></header>
+<main>
+<div class="notice"><b>MOD DEMO — DATE EXEMPLIFICATIVE.</b> Nu sunt cotații actuale și nu trebuie folosite pentru decizii investiționale. Conectarea la surse și baza de date urmează în etapa de integrare.</div>
+<div class="grid">
+<div class="card"><div class="kicker">S&P 500</div><div class="value">7.540,0</div><div class="delta">+0,42% · exemplu</div></div>
+<div class="card"><div class="kicker">Nasdaq Composite</div><div class="value">25.160</div><div class="delta negative">−0,18% · exemplu</div></div>
+<div class="card"><div class="kicker">BET</div><div class="value">34.800</div><div class="delta">+0,21% · exemplu</div></div>
+<div class="card"><div class="kicker">EUR/RON</div><div class="value">5,3400</div><div class="delta negative">+0,03% · exemplu</div></div>
+</div>
+<div class="section"><h2>Piețe globale</h2><div class="charts"><div class="card"><div class="kicker">Evoluție ilustrativă — 5 sesiuni</div><div id="market" class="chart"></div></div><div class="card"><div class="kicker">Tablou de risc — valori demo</div><div id="risk" class="chart"></div></div></div></div>
+<div class="section"><h2>România și BVB</h2><div class="card"><table class="table"><thead><tr><th>Indicator</th><th>Valoare demo</th><th>Status</th></tr></thead><tbody>
+<tr><td>BET</td><td>34.800</td><td>Exemplificativ</td></tr><tr><td>BET-NG</td><td>2.450</td><td>Exemplificativ</td></tr><tr><td>Valoare tranzacții</td><td>125 mil. lei</td><td>Exemplificativ</td></tr><tr><td>ROBOR 3M</td><td>6,10%</td><td>Exemplificativ</td></tr></tbody></table></div></div>
+<div class="section"><h2>Macro, dobânzi și active</h2><div class="grid">
+<div class="card"><div class="kicker">Inflație România</div><div class="value">—</div><div class="sub">Așteaptă integrarea BNR/INS</div></div>
+<div class="card"><div class="kicker">Dobândă BNR</div><div class="value">—</div><div class="sub">Așteaptă validarea comunicatului</div></div>
+<div class="card"><div class="kicker">Brent</div><div class="value">—</div><div class="sub">Așteaptă sursă de piață validată</div></div>
+<div class="card"><div class="kicker">Aur</div><div class="value">—</div><div class="sub">Așteaptă integrarea datelor</div></div>
+</div></div>
+<div class="section"><h2>Control editorial CTL</h2><div class="card"><table class="table"><tbody>
+<tr><td>Valori cu sursă și timestamp</td><td>Obligatoriu</td></tr><tr><td>Separare: confirmat / estimat / interpretare</td><td>Obligatoriu</td></tr><tr><td>Verificare închidere vs. intraday</td><td>Obligatoriu</td></tr><tr><td>Rubrici editoriale</td><td>Țintă: 40/40 + anexă Dividend Kings</td></tr><tr><td>Colectare automată</td><td>Neactivată în prototip</td></tr></tbody></table></div></div>
+</main><footer>CTL Financial Intelligence · Prototip de interfață · Datele demo sunt fictive și marcate ca atare.</footer>
+<script>
+const navy='#0b1d33',gold='#d6ad55',muted='#aab8c8';
+Plotly.newPlot('market',[{x:['Lun','Mar','Mie','Joi','Vin'],y:[100,100.4,99.9,100.7,101.1],type:'scatter',mode:'lines+markers',line:{color:gold,width:3},marker:{size:7}}],{paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font:{color:muted},margin:{l:35,r:15,t:10,b:35},yaxis:{gridcolor:'#29415d',ticksuffix:'%'},xaxis:{gridcolor:'#29415d'}},{displayModeBar:false,responsive:true});
+Plotly.newPlot('risk',[{type:'bar',x:['Volatilitate','Dobânzi','Valută','Energie'],y:[55,68,35,48],marker:{color:gold}}],{paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font:{color:muted},margin:{l:35,r:10,t:10,b:45},yaxis:{range:[0,100],gridcolor:'#29415d'},xaxis:{gridcolor:'#29415d'}},{displayModeBar:false,responsive:true});
+</script></body></html>
